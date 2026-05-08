@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Industrial & Domestic Cleaning Solutions</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #c92a2a 100%);
+            color: #fff;
+        }
+        
+        .container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .card {
+            width: 100%;
+            max-width: 420px;
+            background: #111827;
+            border-radius: 18px;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.36);
+            padding: 32px;
+            border-top: 5px solid #ff6b6b;
+        }
+        
+        .title {
+            margin: 0 0 12px;
+            font-size: 1.9rem;
+        }
+        
+        .subtitle {
+            margin: 0 0 24px;
+            color: #9ca3af;
+        }
+        
+        .field {
+            margin-bottom: 18px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #d1d5db;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #374151;
+            border-radius: 10px;
+            background: #111827;
+            color: #f9fafb;
+            font-size: 1rem;
+        }
+        
+        button {
+            width: 100%;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: #fff;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background: #1d4ed8;
+        }
+        
+        .link {
+            display: block;
+            margin-top: 18px;
+            text-align: center;
+            color: #93c5fd;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <h1 class="title">Admin Login</h1>
+            <p class="subtitle">Enter admin credentials to access the dashboard.</p>
+
+            <form id="admin-login-form" method="post" action="#">
+                <div class="field">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="admin@cleaning.com">
+                </div>
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                </div>
+                <div id="admin-error" class="notice" style="display:none; color:#b91c1c; background:#fee2e2; border-color:#fecaca;"></div>
+                <button type="submit">Login</button>
+            </form>
+
+            <a class="link" href="Untitled-7.html">Back to Home</a>
+        </div>
+    </div>
+    <script src="auth.js" defer></script>
+</body>
+
+</html>

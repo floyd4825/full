@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Industrial & Domestic Cleaning Solutions</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            min-height: 100vh;
+            color: #1a202c;
+        }
+        
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #c92a2a 100%);
+            padding: 28px 32px;
+            border-radius: 14px;
+            margin-bottom: 28px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .btn {
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: #fff;
+        }
+        
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: #e0e7ff;
+            color: #667eea;
+        }
+        
+        .btn-secondary:hover {
+            background: #c7d2fd;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 28px;
+        }
+        
+        .stat-card {
+            background: #fff;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1a202c;
+        }
+        
+        .card {
+            background: #fff;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 28px;
+        }
+        
+        .card h2 {
+            margin: 0 0 24px 0;
+            font-size: 1.5rem;
+            color: #1a202c;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 16px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th {
+            background: #f9fafb;
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 700;
+            color: #374151;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        td {
+            padding: 16px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        tr:hover {
+            background: #f9fafb;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6b7280;
+        }
+        
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+        
+        .form-group {
+            margin-bottom: 18px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        
+        .accept-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        
+        .accept-btn:hover {
+            background: #047857;
+        }
+        
+        .note {
+            background: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 12px 14px;
+            border-radius: 6px;
+            color: #15803d;
+            margin-top: 16px;
+        }
+    </style>
+</head>
+
+<body data-page="admin-dashboard">
+    <div class="page">
+        <div class="header">
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <img src="logo.jpeg" alt="Logo" style="height: 50px; width: auto; border-radius: 8px;">
+                <div>
+                    <h1>Admin Dashboard</h1>
+                    <p style="margin:8px 0 0; font-size:1rem; color:#6b7280;">Managed by admin@cleaning.com | Support: +1 (224) 440-0570</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <a href="Untitled-7.html" class="btn btn-secondary">Home</a>
+                <button id="logout-button" class="btn btn-primary" type="button">Logout</button>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="stat-card">
+                <div class="stat-label">Total Customers</div>
+                <div class="stat-value" id="admin-total-customers">--</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Invoices</div>
+                <div class="stat-value" id="admin-total-invoices">--</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Amount Paid</div>
+                <div class="stat-value" id="admin-amount-paid">--</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Amount Pending</div>
+                <div class="stat-value" id="admin-amount-pending">--</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Pending Requests</div>
+                <div class="stat-value" id="admin-pending-requests">--</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Customers</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Contact</th>
+                        <th>Email</th>
+                        <th>Joined</th>
+                    </tr>
+                </thead>
+                <tbody id="admin-customer-body">
+                    <tr>
+                        <td colspan="4" style="text-align:center; padding:18px; color:#6b7280;">No customers loaded yet.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>Service Requests</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Service Type</th>
+                        <th>Description</th>
+                        <th>Requested Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="admin-service-requests-body">
+                    <tr>
+                        <td colspan="6" style="text-align:center; padding:18px; color:#6b7280;">No service requests yet.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>Latest Invoices</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Invoice #</th>
+                        <th>Customer</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="admin-invoice-body">
+                    <tr>
+                        <td colspan="5" style="text-align:center; padding:18px; color:#6b7280;">No invoices found yet.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>Create Invoice</h2>
+            <form id="invoice-form" method="post" action="#">
+                <div class="form-group">
+                    <label for="customer_id">Customer Email or Company</label>
+                    <input type="text" id="customer_id" name="customer_id" required placeholder="Enter customer email or company">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="invoice_number">Invoice Number</label>
+                        <input type="text" id="invoice_number" name="invoice_number" required placeholder="INV-xxxx">
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount</label>
+                        <input type="number" id="amount" name="amount" required step="0.01" placeholder="0.00">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" rows="4" placeholder="Service description"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="due_date">Due Date</label>
+                    <input type="date" id="due_date" name="due_date" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Create Invoice</button>
+                <div id="invoice-submit-notice" class="note" style="display:none; margin-top:16px;"></div>
+                <p class="hint">This form creates an invoice for a registered customer.</p>
+            </form>
+        </div>
+    </div>
+    <script src="auth.js" defer></script>
+</body>
+
+</html>
